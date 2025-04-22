@@ -33,17 +33,29 @@
 		A7DCA1A32DB70BA6009A6707 /* Exceptions for "HomeDash" folder in "HomeDash" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				"Models/Extensions/Room+Extensions.swift",
+				"Supporting Files/Info.plist",
 			);
 			target = A7DCA17C2DB70BA5009A6707 /* HomeDash */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		A771F7632DB7DE0B00EE37A2 /* Exceptions for "HomeDash" folder in "Copy Bundle Resources" phase from "HomeDash" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = A7DCA17B2DB70BA5009A6707 /* Resources */;
+			membershipExceptions = (
+				"Models/Extensions/Room+Extensions.swift",
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A7DCA17F2DB70BA5009A6707 /* HomeDash */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				A7DCA1A32DB70BA6009A6707 /* Exceptions for "HomeDash" folder in "HomeDash" target */,
+				A771F7632DB7DE0B00EE37A2 /* Exceptions for "HomeDash" folder in "Copy Bundle Resources" phase from "HomeDash" target */,
 			);
 			path = HomeDash;
 			sourceTree = "<group>";
@@ -185,6 +197,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
+				ORGANIZATIONNAME = tcdrozd;
 				TargetAttributes = {
 					A7DCA17C2DB70BA5009A6707 = {
 						CreatedOnToolsVersion = 16.3;
@@ -288,12 +301,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HomeDash/HomeDash.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9WNUC8T5K7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HomeDash/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Home Dash";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -306,6 +321,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tcdrozd.HomeDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -318,12 +334,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HomeDash/HomeDash.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9WNUC8T5K7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HomeDash/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Home Dash";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -336,6 +354,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tcdrozd.HomeDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

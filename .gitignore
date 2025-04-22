@@ -1,0 +1,38 @@
+# Xcode
+DerivedData/
+build/
+*.xcworkspace
+!default.xcworkspace
+
+# User-specific Xcode settings
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# macOS junk
+.DS_Store
+
+# Crash reports
+*.xcCrashLogs
+
+# Temporary files
+*.swp
+*.tmp
+*.bak
+
+# Logs
+*.log
+
+# Playground live data
+timeline.xctimeline
+playground.xcworkspace

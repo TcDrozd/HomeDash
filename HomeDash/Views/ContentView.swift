@@ -12,40 +12,45 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Home.name, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var homes: FetchedResults<Home>
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(homes) { home in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        VStack(alignment: .leading) {
+                            Text(home.name ?? "Unnamed Home")
+                            if let date = home.purchaseDate {
+                                Text("Purchased \(DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none))")
+                            }
+                        }
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(home.name ?? "Unnamed Home")
                     }
                 }
-                .onDelete(perform: deleteItems)
+                .onDelete(perform: deleteHomes)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button(action: addHome) {
+                        Label("Add Home", systemImage: "plus")
                     }
                 }
             }
-            Text("Select an item")
+            Text("Select a home")
         }
     }
 
-    private func addItem() {
+    private func addHome() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newHome = Home(context: viewContext)
+            newHome.purchaseDate = Date()
 
             do {
                 try viewContext.save()
@@ -58,9 +63,9 @@ struct ContentView: View {
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteHomes(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { homes[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -73,13 +78,6 @@ struct ContentView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 #Preview {
     ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
