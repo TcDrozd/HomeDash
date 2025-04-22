@@ -35,7 +35,7 @@
         <relationship name="home" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Home" inverseName="notes" inverseEntity="Home"/>
         <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="notes" inverseEntity="Room"/>
     </entity>
-    <entity name="Room" representedClassName="Room" syncable="YES" codeGenerationType="category">
+    <entity name="Room" representedClassName="Room" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="documents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Document" inverseName="rooms" inverseEntity="Document"/>

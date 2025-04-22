@@ -33,8 +33,8 @@
 		A7DCA1A32DB70BA6009A6707 /* Exceptions for "HomeDash" folder in "HomeDash" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Info.plist,
 				"Models/Extensions/Room+Extensions.swift",
-				"Supporting Files/Info.plist",
 			);
 			target = A7DCA17C2DB70BA5009A6707 /* HomeDash */;
 		};

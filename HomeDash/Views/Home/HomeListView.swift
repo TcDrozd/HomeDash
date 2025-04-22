@@ -19,7 +19,7 @@ struct HomeListView: View {
         NavigationView {
             List(homes) { home in
                 NavigationLink {
-                    Text("Details for: \(home.name ?? "Unnamed Home")")
+                    HomeDetailView(home: home)
                 } label: {
                     Text(home.name ?? "Unnamed Home")
                 }
