@@ -9,28 +9,60 @@ import SwiftUI
 
 struct HomeDetailView: View {
     var home: Home
+    @Environment(\.managedObjectContext) private var viewContext
+
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
-        List {
-            Section(header: Text("Overview")) {
-                Text("Name: \(home.wrappedName)")
-                if let date = home.purchaseDate {
-                    Text("Purchased: \(date, style: .date)")
-                }
-            }
-
-            Section(header: Text("Explore")) {
-                NavigationLink("Rooms") {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 16) {
+                NavigationLink {
                     RoomListView(home: home)
+                } label: {
+                    DashboardTile(icon: "house.fill", title: "Rooms")
                 }
-                NavigationLink("Upgrades") {
-                    Text("Upgrades View Placeholder")  // placeholder
+
+                NavigationLink {
+                    Text("Upgrades View Placeholder")
+                } label: {
+                    DashboardTile(icon: "wrench.and.screwdriver.fill", title: "Upgrades")
                 }
-                NavigationLink("Inventory") {
-                    Text("Inventory View Placeholder")  // placeholder
+
+                NavigationLink {
+                    Text("Inventory View Placeholder")
+                } label: {
+                    DashboardTile(icon: "cube.box.fill", title: "Inventory")
+                }
+
+                NavigationLink {
+                    Text("Documents View Placeholder")
+                } label: {
+                    DashboardTile(icon: "doc.fill", title: "Documents")
+                }
+
+                NavigationLink {
+                    NoteListView()
+                } label: {
+                    DashboardTile(icon: "note.text", title: "Notes")
+                }
+
+                NavigationLink {
+                    Text("Reminders View Placeholder")
+                } label: {
+                    DashboardTile(icon: "clock.fill", title: "Reminders")
                 }
             }
+            .padding()
         }
         .navigationTitle(home.wrappedName)
+    }
+}
+
+// Previews
+struct HomeDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            HomeDetailView(home: PreviewData.sampleHome)
+        }
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import CoreData
-
+/*
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -82,3 +82,5 @@ struct ContentView: View {
 #Preview {
     ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
+
+*/

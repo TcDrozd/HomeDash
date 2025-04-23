@@ -64,6 +64,8 @@ enum PreviewData {
         note.content = "Sample Note content"
         note.room = sampleRoom
         note.home = sampleHome
+        note.title = "Sample Note Title"
+        note.timestamp = Date()
         return note
     }()
     
@@ -72,11 +74,38 @@ enum PreviewData {
         let room = Room(context: context)
         room.id = UUID()
         room.name = "Living Room"
-        room.home = sampleHome
-        room.notes = [sampleNote]
-        room.documents = [sampleDocument]
-        room.inventoryItems = [sampleInventoryItem]
-        room.upgrades = [sampleUpgrade]
+
+        let item = InventoryItem(context: context)
+        item.id = UUID()
+        item.name = "Ceiling Fan"
+        item.purchaseDate = Date()
+        item.room = room
+
+        try? context.save()
         return room
     }()
+    
+    static let sampleHomeWithRooms: Home = {
+        let context = PersistenceController.preview.container.viewContext
+        let home = Home(context: context)
+        home.name = "26529 Hampden St - TEST"
+
+        let living = Room(context: context)
+        living.name = "Living Room"
+        living.home = home
+
+        let kitchen = Room(context: context)
+        kitchen.name = "Kitchen"
+        kitchen.home = home
+        
+        let office = Room(context: context)
+        office.name = "Office"
+        office.home = home
+        
+        home.rooms = [living, kitchen, office]
+
+        try? context.save()
+        return home
+    }()
+    
 }

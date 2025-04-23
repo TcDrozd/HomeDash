@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A79B8E6A2DB91FDF001E5FF1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A79B8E682DB91FDF001E5FF1 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A7DCA1922DB70BA6009A6707 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A79B8E682DB91FDF001E5FF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A7DCA17D2DB70BA5009A6707 /* HomeDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DCA1912DB70BA6009A6707 /* HomeDashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeDashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DCA19B2DB70BA6009A6707 /* HomeDashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeDashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,28 +39,16 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				"Models/Extensions/Room+Extensions.swift",
 			);
 			target = A7DCA17C2DB70BA5009A6707 /* HomeDash */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		A771F7632DB7DE0B00EE37A2 /* Exceptions for "HomeDash" folder in "Copy Bundle Resources" phase from "HomeDash" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = A7DCA17B2DB70BA5009A6707 /* Resources */;
-			membershipExceptions = (
-				"Models/Extensions/Room+Extensions.swift",
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A7DCA17F2DB70BA5009A6707 /* HomeDash */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				A7DCA1A32DB70BA6009A6707 /* Exceptions for "HomeDash" folder in "HomeDash" target */,
-				A771F7632DB7DE0B00EE37A2 /* Exceptions for "HomeDash" folder in "Copy Bundle Resources" phase from "HomeDash" target */,
 			);
 			path = HomeDash;
 			sourceTree = "<group>";
@@ -104,6 +97,7 @@
 				A7DCA1942DB70BA6009A6707 /* HomeDashTests */,
 				A7DCA19E2DB70BA6009A6707 /* HomeDashUITests */,
 				A7DCA17E2DB70BA5009A6707 /* Products */,
+				A79B8E682DB91FDF001E5FF1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79B8E6A2DB91FDF001E5FF1 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +295,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = HomeDash/HomeDash.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -333,6 +329,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = HomeDash/HomeDash.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;

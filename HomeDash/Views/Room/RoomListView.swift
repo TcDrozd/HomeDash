@@ -37,7 +37,8 @@ struct RoomListView: View {
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RoomListView(home: PreviewData.sampleHome)
+            RoomListView(home: PreviewData.sampleHomeWithRooms)
         }
     }
 }
+

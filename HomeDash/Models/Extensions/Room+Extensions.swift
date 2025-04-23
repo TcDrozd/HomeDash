@@ -6,7 +6,6 @@
 //  Copyright © 2025 tcdrozd. All rights reserved.
 //
 
-
 import Foundation
 
 extension Room {
@@ -21,4 +20,9 @@ extension Room {
     var wrappedName: String {
         name ?? "Unnamed Room"
     }
+}
+
+// REMOVE LATER
+func debugRoomExtensions() {
+    print("✅ Room extensions are compiling")
 }
