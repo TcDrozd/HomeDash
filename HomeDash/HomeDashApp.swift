@@ -14,7 +14,7 @@ struct HomeDashApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                HomeListView()
+                HomeDashboardView()
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

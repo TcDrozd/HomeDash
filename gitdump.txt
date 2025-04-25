@@ -1,0 +1,69 @@
+commit 3b822d7a0327cafad2136afb7ce53adbb76902da
+Author: TcDrozd <trcharlesd@gmail.com>
+Date:   Wed Apr 23 15:15:23 2025 -0400
+
+    Add Notes functionality and polish dashboard UI
+    
+    - Implemented NoteDetailView with support for title, content, date, and optional image display.
+    - Created NotesListView with scrollable list, clean layout, and swipe-to-delete support.
+    - Enhanced note rows with:
+      • Thumbnail preview if image is attached
+      • Room badge for context
+      • Date formatting and content snippet
+    - Connected NotesListView to HomeDetailView via dashboard tile
+    - Hooked up "Add Note" button to generate new notes with default values
+    - Ensured previews run correctly with seeded PreviewData
+    - Debugged and corrected default ContentView entry point from initial template
+    
+    This sets a solid foundation for journaling and future feed-style tracking via HomeFeedView.
+
+commit 2c319420c076ee224d1c893ef938d85ca64d9a1a
+Author: TcDrozd <trcharlesd@gmail.com>
+Date:   Tue Apr 22 17:47:36 2025 -0400
+
+    Add HomeDetailView and RoomDetailView scaffolding, prep for navigation flow
+    
+    - Introduced HomeDetailView as the central dashboard for a selected Home.
+    - Added RoomDetailView as the target for Room navigation.
+    - Connected RoomListView to HomeDetailView for structured navigation.
+    - Added PreviewData.sampleRoom for consistent preview testing.
+    - Currently not building: extension-based property 'wrappedName' for Room not resolving. Investigating file linkage, spelling, and clean build to resolve.
+
+commit ac518902c1dd1af1d00065cd1419361f3cd85757
+Author: TcDrozd <trcharlesd@gmail.com>
+Date:   Tue Apr 22 11:02:00 2025 -0400
+
+    Set up project foundation continued: Core Data models, Room entity, helpers, and README
+    
+    - Added Room entity to Core Data model with relationships to Home, InventoryItems, Notes, Upgrades, and Documents.
+    - Created Swift-friendly relationship accessors via Room+Extensions (wrappedInventoryItems, wrappedName).
+    - Established file structure convention for Models, Extensions, Views, and Preview Support.
+    - Added PreviewData.swift for centralized test and preview mock data.
+    - Implemented HomeListView scaffolding and prepared for RoomListView wiring.
+    - Added initial project README with goals, feature list, and development roadmap.
+
+commit 1e9920aaf9f0d3eb14c7c83e597fce942cf8a4f8
+Author: TcDrozd <trcharlesd@gmail.com>
+Date:   Mon Apr 21 19:42:16 2025 -0400
+
+    Initial commit: Setup Core Data models for HomeDash
+    
+    - Created foundational Core Data entities:
+      - Home
+      - Upgrade
+      - Document
+      - InventoryItem
+      - Note
+    
+    - Defined key attributes for each entity (UUIDs, names, metadata, timestamps).
+    - Established relationships between entities:
+      - Home ↔️ Upgrades, Documents, InventoryItems, Notes (To-Many)
+      - Inverse relationships set for all associations.
+    
+    - Prepared data model for CloudKit syncing by using UUID-based identifiers.
+
+commit a2c096ab9ccccef6608d75cbf2084f8944537892
+Author: TcDrozd <trcharlesd@gmail.com>
+Date:   Mon Apr 21 19:26:32 2025 -0400
+
+    Initial Commit
