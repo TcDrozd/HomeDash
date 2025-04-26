@@ -9,49 +9,89 @@ import CoreData
 
 struct PersistenceController {
     static let shared = PersistenceController()
-
+    
+    static let containerName = "HomeDash"
+    
     @MainActor
     static let preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
+        let controller = PersistenceController(inMemory: true)
+        let viewContext = controller.container.viewContext
         
         // Plant mock data for previews
         let sampleHome = Home(context: viewContext)
         sampleHome.name = "Preview Home"
         sampleHome.purchaseDate = Date()
-
+        
         do {
             try viewContext.save()
         } catch {
             let nsError = error as NSError
             fatalError("💥 Unresolved error \(nsError), \(nsError.userInfo)")
         }
-        return result
+        
+        return controller
     }()
-
+    
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "HomeDash")
+        container = NSPersistentContainer(name: Self.containerName)
+        
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("💥 Unresolved error \(error), \(error.userInfo)")
+        
+        container.loadPersistentStores { storeDescription, error in
+            guard error == nil else {
+                let nsError = error as NSError
+                fatalError("💥 Unresolved error \(nsError), \(nsError.userInfo)")
             }
-        })
+            
+            self.seedSeasonalRemindersIfNeeded(context: self.container.viewContext)
+        }
+        
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+    
+    private func seedSeasonalRemindersIfNeeded(context: NSManagedObjectContext) {
+        let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        
+        do {
+            let count = try context.count(for: fetchRequest)
+            guard count == 0 else {
+                print("✅ Seasonal reminders already exist.")
+                return
+            }
+            
+            print("🌱 Seeding default seasonal reminders...")
+
+            let presetReminders = [
+                (title: "Check sump pump", month: 1),
+                (title: "Inspect attic for leaks", month: 2),
+                (title: "Reverse ceiling fan (spring)", month: 3),
+                (title: "Clean gutters after spring rains", month: 4),
+                (title: "Service air conditioner", month: 5),
+                (title: "Inspect decks and outdoor areas", month: 6),
+                (title: "Check fire extinguishers", month: 7),
+                (title: "Inspect caulking/weather stripping", month: 8),
+                (title: "Reverse ceiling fan (fall)", month: 9),
+                (title: "Winterize outdoor faucets", month: 10),
+                (title: "Clean gutters after leaves fall", month: 11),
+                (title: "Test carbon monoxide detectors", month: 12)
+            ]
+
+            for preset in presetReminders {
+                let reminder = Reminder(context: context)
+                reminder.id = UUID()
+                reminder.title = preset.title
+                reminder.month = Int16(preset.month)
+                reminder.isCompleted = false
+            }
+            
+            try context.save()
+            print("✅ Seasonal reminders seeded successfully.")
+        } catch {
+            print("❌ Failed to fetch or seed reminders: \(error.localizedDescription)")
+        }
     }
 }
