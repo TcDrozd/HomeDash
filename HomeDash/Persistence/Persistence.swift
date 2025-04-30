@@ -41,13 +41,14 @@ struct PersistenceController {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
         
-        container.loadPersistentStores { storeDescription, error in
-            guard error == nil else {
-                let nsError = error as NSError
-                fatalError("💥 Unresolved error \(nsError), \(nsError.userInfo)")
+        container.loadPersistentStores { [self] storeDescription, error in
+            guard let error = error else {
+                seedSeasonalRemindersIfNeeded(context: container.viewContext)
+                return
             }
-            
-            self.seedSeasonalRemindersIfNeeded(context: self.container.viewContext)
+
+            let nsError = error as NSError
+            fatalError("💥 Unresolved error \(nsError), \(nsError.userInfo)")
         }
         
         container.viewContext.automaticallyMergesChangesFromParent = true

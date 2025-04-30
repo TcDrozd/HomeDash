@@ -19,7 +19,9 @@ struct QuickAccessView: View {
             HStack(spacing: 16) {
                 QuickAccessTile(icon: "cube.box", label: "Inventory", color: .blue)
                 QuickAccessTile(icon: "doc.fill", label: "Documents", color: .purple)
-                QuickAccessTile(icon: "note.text", label: "Notes", color: .orange)
+                NavigationLink(destination: NoteListView()) {
+                    QuickAccessTile(icon: "note.text", label: "Notes", color: .orange)
+                }
                 QuickAccessTile(icon: "checkmark.circle", label: "Tasks", color: .green)
             }
         }
@@ -47,7 +49,7 @@ struct QuickAccessTile: View {
                 .font(.caption)
                 .foregroundColor(.primary)
         }
-        .frame(width: 70, height: 90)
+        .frame(width: 80, height: 90)
     }
 }
 
